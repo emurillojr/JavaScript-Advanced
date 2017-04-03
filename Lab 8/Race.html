@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+    <!-- Ernesto Murillo Lab 8 JS Race -->
+
+    <head>
+        <title>Race</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            canvas {
+                border: 3px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Click Play to Race</h1>
+        <br>
+        <canvas id="race" width="750" height="150"></canvas>
+        <br /><br /><br /><br /><br />
+        <button class="toggle" id="play">Play</button>
+        <script type ="text/javascript">
+            var can = document.querySelector('#race');
+            var ctx = can.getContext('2d');
+            var redCar = 0;
+            var blueCar = 0;
+            var finshLine = 650;
+            var play = document.querySelector('#play');
+
+            function drawClear() {
+                window.ctx.clearRect(0, 0, window.can.width, window.can.height); // x y / w h
+            }
+            // function that creates the finsih line
+            function drawLine() {
+                window.ctx.beginPath();
+                window.ctx.moveTo(650, 0); //x, y
+                window.ctx.lineTo(650, window.can.height);
+                window.ctx.stroke();
+            }
+            // creates the blue box
+            function drawBlue() {
+                /* the fillStyle will color in the whole box with the color selected */
+                window.ctx.fillStyle = "blue";
+                window.ctx.fillRect(window.blueCar, 90, 100, 40); // x, y, width, height
+            }
+            // function to create the red box
+            function drawRed() {
+                /* the fillStyle will color in the whole box with the color selected */
+                window.ctx.fillStyle = "red";
+                window.ctx.fillRect(window.redCar, 25, 100, 40); // x, y, width, height
+            }
+            function move()
+            {
+                if ((window.redCar + 100) < window.finshLine && (window.blueCar + 100) < window.finshLine) {
+                    window.redCar += randNum(20);
+                    window.blueCar += randNum(20);
+                    drawClear();
+                    drawLine();
+                    drawBlue();
+                    drawRed();
+                    setTimeout(window.move, 15);
+                    window.play.style.display = 'none';
+                } else
+                {
+                    if ((window.redCar + 100) >= window.finshLine)
+                    {
+                        textRed();
+                    }
+                    if ((window.blueCar + 100) >= window.finshLine)
+                    {
+                        textBlue();
+                    }
+                    reset();
+                }
+            }
+
+            function textBlue() {
+                window.ctx.fillStyle = "blue";
+                window.ctx.font = "16pt Helvetica";
+                window.ctx.fillText("Blue Wins", (window.can.width / 2) - 100, window.can.height / 2); //x,y
+            }
+
+            function textRed() {
+                window.ctx.fillStyle = "red";
+                window.ctx.font = "16pt Helvetica";
+                window.ctx.fillText("Red Wins", (window.can.width / 2) - 100, window.can.height / 2); //x,y
+            }
+
+            function reset() {
+                window.redCar = 0;
+                window.blueCar = 0;
+                window.play.style.display = 'block';
+            }
+            play.addEventListener('click', move);
+
+            // function to create a random number
+            function randNum(max)
+            {
+                return Math.ceil(Math.random() * max) + 1;
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- ..
+Ernesto Murillo Lab 6
+-->
+<html>
+    <head>
+        <title>Blocks</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <button class="add">Add Block</button>    
+
+        <script type="text/javascript">
+            'use strict';
+            //linking button to Block class
+            document.querySelector('button.add').addEventListener('click', function () {
+                new Block();
+            });
+
+            function Block() {
+                this.timer = null;  // set timer to null
+                this.top = this.getRandomNumber(50, 500);  // set x top to random number 50 to 500 
+                this.left = this.getRandomNumber(50, 500); // set y top to random number 50 to 500
+                this.create();  // create function
+                if (!this.timer) {   // if time is not null
+                    this.timer = setInterval(this.move.bind(this), 100);  // set move interval to 100 ms
+                }
+            }
+
+            // prototype create function
+            Block.prototype.create = function () {
+                this.elem = document.createElement('div');   // create element div
+                this.elem.style.position = 'absolute';   // set sytle position to absolute
+                this.elem.style.width = '50px';  // set width of box to 50px
+                this.elem.style.height = '50px';  // set height of box to 50px
+                this.elem.style.backgroundColor = this.getRandomColor();  // set background color to random color of array of colors
+                this.elem.style.top = this.top + 'px';  // set style.top to random 50 to 500px
+                this.elem.style.left = this.left + 'px';  // set style.left random 50 to 500px
+                this.elem.style.transform = 'rotate(' + this.getRandomNumber(0, 360) + 'deg)';  // 0 to 360 degrees
+                this.elem.style.opacity = Math.random();  // opacity random 0 to 1
+                this.elem.addEventListener('click', this.remove.bind(this));   // event listener click to to remove
+                document.body.appendChild(this.elem);
+                return this; // return the class
+            };
+
+            // get random number function
+            Block.prototype.getRandomNumber = function (min, max) {
+                var number = Math.random() * (max - min) + min;
+                return number;
+            };
+
+            // getRandomColor function 
+            Block.prototype.getRandomColor = function () {
+                // var colors array
+                var colors = ['red', 'green', 'blue', 'silver', 'yellow', 'pink', 'brown', 'purple', 'gold', 'orange', 'cyan'];
+                // var index chosing random color
+                var index = Math.floor(Math.random() * (colors.length));
+                return colors[index];  // return random color index
+                console.log(index);  // show it in the console
+            };
+
+            Block.prototype.move = function ()
+            {
+                // x position random 50,500. between -5 to 5 pixels at a time.
+                this.top = (this.getRandomNumber(-5, 5)) + this.top;
+                this.elem.style.top = this.top + 'px';
+                // y position random 50,500. between -5 to 5 pixels at a time.
+                this.left = (this.getRandomNumber(-5, 5)) + this.left;         
+                this.elem.style.left = this.left + 'px';                       
+                this.elem.style.transform = 'rotate(' + this.getRandomNumber(0, 360) + 'deg)';
+                this.elem.style.opacity = Math.random();
+            };
+
+            Block.prototype.remove = function () {
+                clearInterval(this.timer); // clears the 100ms
+                document.body.removeChild(this.elem);  //remove
+                return this;
+            };
+
+        </script>
+    </body>
+</html>
