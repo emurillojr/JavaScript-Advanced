@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ernesto Murillo Adv JavaScript Lab 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+    <caption>EMurillo Lab 1
+        <br>
+    </caption>
+
+    <script type="text/javascript">
+        // Ernesto Murillo Script 1 lab 1     
+        var name = "Ernesto";
+        var checkIt = true;
+        var isNum = 5;
+
+        console.log(name == name);
+        console.log(name === name);
+        console.log(name == checkIt);
+        console.log(name === checkIt);
+        console.log(name == isNum);
+        console.log(name === isNum);
+
+        console.log(checkIt == checkIt);
+        console.log(checkIt === checkIt);
+        console.log(checkIt == isNum);
+        console.log(checkIt === isNum);
+
+        console.log(isNum == isNum);
+        console.log(isNum === isNum);
+    </script>
+
+
+    <script type="text/javascript">
+        // Ernesto Murillo Script 2 lab 1      
+        var myName = "Jack";
+        var otherName = "Mike";
+        var firstBool = true;
+        var secondBool = false;
+        var num0 = 0;
+        var num = 5;
+
+        if (myName === myName || myName == myName)
+        {
+            console.log(myName);
+            if (myName !== otherName) {
+                console.log("myName !== otherName");
+            }
+            if (myName !== firstBool) {
+                console.log("myName !== firstBool");
+            }
+            if (myName !== secondBool) {
+                console.log("myName !== secondBool");
+            }
+            if (myName !== num0) {
+                console.log("myName !== num0");
+            }
+            if (myName !== num) {
+                console.log("myName !== num");
+            }
+        }
+
+        if (otherName == otherName || otherName === otherName)
+        {
+            console.log(otherName);
+            if (otherName !== firstBool) {
+                console.log("otherName !== firstBool");
+            }
+            if (otherName !== secondBool) {
+                console.log("otherName !== secondBool");
+            }
+            if (otherName !== num0) {
+                console.log("otherName !== num0");
+            }
+            if (otherName !== num) {
+                console.log("otherName !== num");
+            }
+        }
+
+        if (firstBool == firstBool || firstBool === firstBool)
+        {
+            console.log(firstBool);
+            if (firstBool !== secondBool) {
+                console.log("firstBool !== secondBool");
+            }
+            if (firstBool !== num0) {
+                console.log("firstBool !== num0");
+            }
+            if (firstBool !== num) {
+                console.log("firstBool !== num");
+            }
+        }
+
+        if (secondBool == secondBool || secondBool === secondBool)
+        {
+            console.log(secondBool);
+            if (secondBool !== num0) {
+                console.log("secondBool !== num0");
+            }
+            if (secondBool !== num) {
+                console.log("secondBool !== num");
+            }
+        }
+
+        if (num0 == num0 || num0 === num0)
+        {
+            console.log(num0);
+            if (num0 !== num) {
+                console.log("num0 !== num");
+            }
+        }
+
+        if (num == num || num === num)
+        {
+            console.log(num);
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        // Ernesto Murillo Script 3 lab 1 
+
+        for (var s = 10; s >= 0; s--) {
+            console.log(s);
+        }
+
+        for (var i = 0; i <= 10; i++) {
+            console.log(i);
+        }
+    </script>
+
+
+    <form action="">
+        My name:<br>
+        <input type="text" name="myName" value="Ernesto" />
+    </form>
+
+    <script type="text/javascript">
+        // Ernesto Murillo Script 4 lab 1 
+        var inputBox = document.querySelector('input[name="myName"]');
+
+        // function or class?  need to learn more about DOM
+        var inputBox1 = document.querySelector('input[value ="Ernesto"]').style.color = 'red';      // make value text color red
+        document.querySelector('input[value ="Ernesto"]').style.backgroundColor = 'black';   // back ground color of value text to black
+        document.querySelector('input[value ="Ernesto"]').style.fontFamily = 'Comic Sans MS';  // change font of value text 
+
+        console.log(inputBox.value);
+        console.log(inputBox.name);
+        console.log(inputBox.type);
+        // or
+        console.log(inputBox.getAttribute('value'));
+        console.log(inputBox.getAttribute('name'));
+        console.log(inputBox.getAttribute('type'));
+
+
+        inputBox.style.fontSize = "50px";     //make font inside box 50px
+        inputBox.style.border = '25px dotted yellow';  // make bottor inside box dotted yellow color and 25 px
+        inputBox.style.textAlign = 'center';  // make text inside box centered
+
+    </script>
+
+</body>
+</html>

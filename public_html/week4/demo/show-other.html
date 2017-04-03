@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            .error {
+                color: red;
+            }
+
+            .hide {
+                display: none;
+            }
+
+            .show, .error .hide {
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+         <form action="#" method="post">
+                       
+            <p class="radioError">
+                <label>Radio Button</label>
+                <input type="radio" name="agreeForm" value="agree" />
+                Other <input type="radio" name="agreeForm" value="Other" />
+                               
+                <div class="other hide"> Other: <input type="text" name="other" /> </div>
+            </p>
+                                 
+        </form>
+        
+        <script type="text/javascript">
+                       
+           var radios = document.querySelectorAll('input[name="agreeForm"]');
+           
+           for (var i = 0; i < radios.length; i++ ) {
+               radios[i].addEventListener('click', showfield);
+           }
+           
+           
+           function showfield(e) {
+                var divOther = document.querySelector('div.other');
+                var input = document.querySelector('input[name="other"]');
+                var other = document.querySelector('input[value="Other"]');
+
+                console.log(other);
+                
+                if ( other.checked ) {
+                    divOther.classList.remove('hide');
+                } else {
+                    divOther.classList.add('hide');
+                    input.value = '';
+                }
+                    
+            }            
+            
+        </script>
+    </body>
+</html>
